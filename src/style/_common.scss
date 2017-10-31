@@ -1,0 +1,85 @@
+// reset style and common style
+// 全局使用 边框盒子模型方便尺寸设置
+* {
+  box-sizing: border-box;
+}
+// cl清除浮动
+.clearfix {
+  &::after,
+  &::before{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+// 页面中所有超级连接的样式清理
+a {
+  color: #444;
+  text-decoration: none;
+  &:link,
+  &:visited,
+  &:hover,
+  &:active{
+    color: #444;
+    text-decoration: none;
+  }
+}
+
+/**
+* 1. 防止元素中「font-family」不能继承
+* 2. 西文字体和 OS X 字体写在前面
+* 3. Opera 12.1 之前版本不支持中文字体的英文名称
+* 4. 微软雅黑「\5FAE\8F6F\96C5\9ED1」,中易宋体「\5B8B\4F53」
+*/
+body,
+button, /* 1 */
+input, /* 1 */
+select, /* 1 */
+textarea  /* 1 */
+{
+    font-family: 'helvetica neue',arial,'hiragino sans gb',stheiti,'wenquanyi micro hei',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;
+}
+
+label,
+button{
+  cursor: pointer;
+}
+
+// 常用样式
+// size-type: 通过边距调整布局
+@for $level from 0 through 10 {
+  @each $position in map-keys($size-positon){
+    @each $dir in map-keys($size-dir){
+      .#{$position}#{$dir}#{$level}{
+        #{map-get($size-positon,$position)}-#{map-get($size-dir,$dir)}: $size-unit * $level !important;
+      }
+    }
+  }
+}
+// 文字颜色样式
+// 颜色-text__decoration
+// 背景颜色样式
+// 颜色__decoration
+// decoration 的取值为 darken1-5 lighten1-5
+@each $color in map-keys($colors) {
+  .#{$color}-text{
+    color: map-get($colors, $color) !important;
+  }
+  .#{$color}{
+    background-color:map-get($colors, $color) !important;
+  }
+  @for $level from 1 through 5{
+    .#{$color}-text__darken#{$level} {
+      color: darken(map-get($colors, $color),$theme-color-interval * $level) !important;
+    }
+    .#{$color}-text__lighten#{$level} {
+      color: lighten(map-get($colors, $color), $theme-color-interval * $level) !important;
+    }
+    .#{$color}__darken#{$level} {
+      background-color: darken(map-get($colors, $color), $theme-color-interval * $level) !important;
+    }
+    .#{$color}__lighten#{$level} {
+      background-color: lighten(map-get($colors, $color), $theme-color-interval * $level) !important;
+    }
+  }
+}

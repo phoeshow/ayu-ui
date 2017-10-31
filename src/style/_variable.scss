@@ -1,0 +1,102 @@
+// 栅格系统---grid
+$breakpoint: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px); // 媒体查询尺寸
+$screen-max: (sm:768px, md:970px, lg:1170px, xl:1560px); // 定宽布局下各个屏幕breakpoint中的最大宽度
+$container-padding: 0 15px; // 容器内间距
+$colume: 12; // 列数量
+
+// global设置
+$border-radius: 2px; // 全局圆角设置
+
+// 分割线 divider 效果
+$divider: #cfcfcf !default;
+$divider-darken: darken($divider, 10%);
+$divider-lighten: lighten($divider, 10%);
+
+// 常用布局边距定义 
+$size-positon: (m: margin, p: padding);
+$size-dir: (t:top, r:right, b:bottom, l:left);
+$size-unit: 8px; // 边距的单位尺寸
+
+// 自定义颜色
+$white:  #fff !default;
+$gray-100: #f1f1f1 !default;
+$gray-200: #e1e1e1 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adadad !default;
+$gray-600: #666666 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #191919 !default;
+$black:  #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+  100: $gray-100,
+  200: $gray-200,
+  300: $gray-300,
+  400: $gray-400,
+  500: $gray-500,
+  600: $gray-600,
+  700: $gray-700,
+  800: $gray-800,
+  900: $gray-900
+), $grays);
+
+$blue:    #03a9f4 !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: () !default;
+$colors: map-merge((
+  blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $gray-600,
+  gray-dark: $gray-800
+), $colors);
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $blue,
+  warning: $yellow,
+  error: $red,
+  danger:$red,
+  light: $gray-100,
+  dark: $gray-800
+), $theme-colors);
+
+$theme-color-interval: 8% !default; // 颜色变化步进值
+
+// button 样式设置
+$btn-size-paddingY: 10px;
+$btn-size-paddingX: 18px;
+$btn-size-sm-paddingX: 6px;
+$btn-size-sm-paddingY: 6px;
+$btn-size-lg-paddingY: 14px;
+$btn-size-lg-paddingX: 18px;
+
+// 字体大小
+$btn-font-size: (
+  lg:22px,
+  sm:14px,
+  md:18px
+)

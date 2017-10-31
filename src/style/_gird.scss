@@ -1,0 +1,57 @@
+.a--container{
+  padding: $container-padding;
+  margin: 0 auto;
+  &.fluid{
+    width: 100%;
+  }
+  .a--box{
+    display: flex;
+    @for $i from 1 through $colume {
+      .xs#{$i} {
+        flex-basis: percentage((1/$colume)*$i);
+      }
+    }
+
+    @for $i from 1 through $colume {
+      .xs-offset-#{$i} {
+        margin-left: percentage((1/$colume)*$i);
+      }
+    } 
+  }
+}
+
+@each $size in map-keys($breakpoint) {
+  @media screen and (min-width:map-get($breakpoint, $size)) {
+    .a--container {
+      width: map-get($screen-max, $size);
+    }
+    .a--container .a--box {
+      @for $i from 1 through $colume {
+        .#{$size}#{$i} {
+          flex-basis: percentage((1/$colume)*$i);
+        }
+      }
+
+      @for $i from 1 through $colume {
+        .#{$size}-offset-#{$i} {
+          margin-left: percentage((1/$colume)*$i);
+        }
+      }
+    }
+  }
+}
+
+@each $size in map-keys($breakpoint) {
+  @media screen and (max-width: map-get($breakpoint, $size)) {
+    .a--container {
+      & .#{$size}-hide {
+        display: none !important;
+      }
+    }
+  } 
+}
+
+// 占位器
+.a--spacer {
+  flex: 1;
+}
