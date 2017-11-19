@@ -1,5 +1,5 @@
 // 组件安装器
-import './style/index.scss'
+// import './style/index.scss'
 import Grid from './components/Grid'
 
 let componentsList = {
